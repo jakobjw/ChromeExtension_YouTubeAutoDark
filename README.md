@@ -1,7 +1,8 @@
-# ChromeExtension_YouTubeAutoDark
+## ChromeExtension
+# YouTubeAutoDark
 Chrome extension which automatically enables or disables YouTube Dark theme based on the current time
 
-# Installation
+## Installation
 - Clone (or download and extract) to a non-temporary folder
 - In Chrome, open the "Chrome menu", go to "More Tools" > "Extensions"
 - In the top right corner, activate "Developer mode"

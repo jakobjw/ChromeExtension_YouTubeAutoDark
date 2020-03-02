@@ -14,4 +14,4 @@ Chrome extension which automatically enables or disables YouTube Dark theme base
     - Click the "Y" extension icon in the top right corner of Chrome
     - Click on "Options"
     - Enter the desired times and click "Save"
-- To see it in action, just head to YouTube :)
+- To see it in action, just head to YouTube and wait < 10 seconds :)

@@ -1,0 +1,20 @@
+{
+ "name": "YouTube AutoDark",
+ "version": "0.2",
+ "manifest_version" : 2,
+ "description": "Automatically enables or disables YouTube Dark theme based on the current time",
+ "content_scripts": [
+	 {
+		 "matches": ["http://*.youtube.com/*", "https://*.youtube.com/*"],
+		 "js": ["main.js"],
+		 "run_at": "document_idle"
+	 }
+ ],
+ "permissions": [
+    "storage"
+  ],
+ "options_ui": {
+    "page": "options.html",
+	"open_in_tab": false
+ }
+}

@@ -18,8 +18,8 @@
     time_begin_mins = begin_splits[1];
     time_end_hours = end_splits[0];
     time_end_mins = end_splits[1];
-    console.log("YouTube AutoDark: time_begin:   " + time_begin_hours + ":" + time_begin_mins);
-    console.log("YouTube AutoDark: time_end:     " + time_end_hours + ":" + time_end_mins);
+    //console.log("YouTube AutoDark: time_begin:   " + time_begin_hours + ":" + time_begin_mins);
+    //console.log("YouTube AutoDark: time_end:     " + time_end_hours + ":" + time_end_mins);
   });
  }
  
@@ -37,12 +37,12 @@
 
   if(time_begin > time_end){
    // time range encompasses midnight ==> swap begin and end and check if we are NOT within time range
-   console.log("YouTube AutoDark: IN MIDNIGHT ENCOMPASS CASE: !((now < time_begin) && (now >= time_end)): " + (!((now < time_begin) && (now >= time_end))));
+   //console.log("YouTube AutoDark: IN MIDNIGHT ENCOMPASS CASE: !((now < time_begin) && (now >= time_end)): " + (!((now < time_begin) && (now >= time_end))));
    return !((now < time_begin) && (now >= time_end));
   }
 
   else{
-    console.log("YouTube AutoDark: without midnight encompass: (now >= time_begin) && (now < time_end): " + ((now >= time_begin) && (now < time_end)));
+    //console.log("YouTube AutoDark: without midnight encompass: (now >= time_begin) && (now < time_end): " + ((now >= time_begin) && (now < time_end)));
     return (now >= time_begin) && (now < time_end);
   }
 
@@ -58,31 +58,22 @@
   return matches ? matches.pop() : "";
  }
 
- function set_dark_mode(dark_on){ // dark_on = true/false
-  pref_cookie_value = get_cookie_value("PREF");
-  console.log("YouTube AutoDark: pref_cookie_value: " + pref_cookie_value);
-  if(dark_on){
-   document.getElementsByTagName("html")[0].setAttribute("dark", "true");
-   new_pref_cookie_value = pref_cookie_value.replace("f6=80000", "f6=400");
-   document.cookie = "PREF=" + new_pref_cookie_value + ";domain=.youtube.com;max-age=31536000";
-  } else{
-   document.getElementsByTagName("html")[0].removeAttribute("dark");
-   new_pref_cookie_value = pref_cookie_value.replace("f6=400", "f6=80000");
-   document.cookie = "PREF=" + new_pref_cookie_value + ";domain=.youtube.com;max-age=31536000";
-  }
-  pref_cookie_value = get_cookie_value("PREF");
-  console.log("YouTube AutoDark: pref_cookie_value: " + pref_cookie_value);
+ function toggle_dark_mode(){
+  setTimeout('document.getElementById("avatar-btn").click();', 0);
+  setTimeout('document.getElementsByTagName("ytd-toggle-theme-compact-link-renderer")[0].click();', 200);
+  setTimeout('document.getElementsByTagName("paper-toggle-button")[document.getElementsByTagName("paper-toggle-button").length-1].click();', 400);
+  setTimeout('document.getElementById("content").click();', 500);
  }
 
  
  function check_and_maybe_act(){
    dark_desired = check_current_time_dark_desired();
-   console.log("YouTube AutoDark: dark_desired: " + dark_desired);
+   //console.log("YouTube AutoDark: dark_desired: " + dark_desired);
    dark_enabled = get_dark_mode();
-   console.log("YouTube AutoDark: dark_enabled: " + dark_enabled);
+   //console.log("YouTube AutoDark: dark_enabled: " + dark_enabled);
    if(dark_desired != dark_enabled){
-    console.log("YouTube AutoDark: setting dark mode to: " + dark_desired);
-    set_dark_mode(dark_desired);
+    console.log("YouTube AutoDark: toggling dark mode to: " + dark_desired);
+    toggle_dark_mode();
    }
  }
  

@@ -61,8 +61,15 @@
  function toggle_dark_mode(){
   setTimeout('document.getElementById("avatar-btn").click();', 0);
   setTimeout('document.getElementsByTagName("ytd-toggle-theme-compact-link-renderer")[0].click();', 200);
-  setTimeout('document.getElementsByTagName("paper-toggle-button")[document.getElementsByTagName("paper-toggle-button").length-1].click();', 400);
+  setTimeout(function(){_find_and_click_right_toggle_button();}, 400);
   setTimeout('document.getElementById("content").click();', 500);
+ }
+
+ function _find_and_click_right_toggle_button(){  // avoid hitting the "autoplay" toggle button by accident
+  var candidate = document.getElementsByClassName("toggle-button")[document.getElementsByClassName("toggle-button").length-1];
+  if(!candidate.parentNode.parentNode.parentNode.innerHTML.includes("autoplay")){
+   candidate.click();
+  }
  }
 
  
